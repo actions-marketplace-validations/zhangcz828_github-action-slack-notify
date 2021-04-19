@@ -61,7 +61,7 @@ module.exports = require("tls");
 
 const core = __webpack_require__(310);
 const github = __webpack_require__(462);
-const buildSlackAttachments= __webpack_require__(893);
+const att= __webpack_require__(893);
 
 (async () => {
   try {
@@ -74,7 +74,7 @@ const buildSlackAttachments= __webpack_require__(893);
       throw new Error('Missing SLACK_WEBHOOK_URL environment var')
     }
 
-    const attachments = buildSlackAttachments({ status, color, github });
+    const attachments = att.buildSlackAttachments({ status, color, github });
 
     const message = {
       attachments,

@@ -1,6 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const buildSlackAttachments= require('./src/utils');
+const att= require('./src/utils');
 
 (async () => {
   try {
@@ -13,7 +13,7 @@ const buildSlackAttachments= require('./src/utils');
       throw new Error('Missing SLACK_WEBHOOK_URL environment var')
     }
 
-    const attachments = buildSlackAttachments.buildSlackAttachments({ status, color, github });
+    const attachments = att.buildSlackAttachments({ status, color, github });
 
     const message = {
       attachments,
