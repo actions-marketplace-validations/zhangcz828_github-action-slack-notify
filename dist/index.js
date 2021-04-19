@@ -5616,11 +5616,11 @@ function buildSlackAttachments({ status, color, github }) {
     {
       color,
       fields: [
-        {
-          title: 'Repo',
-          value: `<https://github.com/${owner}/${repo} | ${owner}/${repo}>`,
-          short: true,
-        },
+        // {
+        //   title: 'Repo',
+        //   value: `<https://github.com/${owner}/${repo} | ${owner}/${repo}>`,
+        //   short: true,
+        // },
         {
           title: 'Workflow',
           value: `<https://github.com/${owner}/${repo}/actions/runs/${runId} | ${workflow}>`,
