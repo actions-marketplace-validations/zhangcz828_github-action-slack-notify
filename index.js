@@ -13,7 +13,7 @@ const buildSlackAttachments= require('./src/utils');
       throw new Error('Missing SLACK_WEBHOOK_URL environment var')
     }
 
-    const attachments = buildSlackAttachments({ status, color, github });
+    const attachments = buildSlackAttachments.buildSlackAttachments({ status, color, github });
 
     const message = {
       attachments,
