@@ -61,6 +61,7 @@ module.exports = require("tls");
 
 const core = __webpack_require__(310);
 const github = __webpack_require__(462);
+const fetch = __webpack_require__(735)
 const att= __webpack_require__(893);
 
 (async () => {

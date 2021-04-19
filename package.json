@@ -1,6 +1,6 @@
 {
   "name": "github-action-slack-notify",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -20,6 +20,7 @@
   "homepage": "https://github.com/zhangcz828/github-action-slack-notify#readme",
   "dependencies": {
     "@actions/core": "^1.2.7",
-    "@actions/github": "^4.0.0"
+    "@actions/github": "^4.0.0",
+    "node-fetch": "^2.6.1"
   }
 }
