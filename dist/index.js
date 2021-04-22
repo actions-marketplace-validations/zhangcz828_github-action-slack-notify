@@ -5603,7 +5603,7 @@ function buildSlackAttachments({ status, color, github }) {
 
   const sha = event === 'pull_request' ? payload.pull_request.head.sha : github.context.sha;
   const runId = parseInt(process.env.GITHUB_RUN_ID, 10);
-  const button_value = 'good';
+  var button_value = 'good';
 
   if ( status === 'SUCCESS') {
     status = status + '🚀';
