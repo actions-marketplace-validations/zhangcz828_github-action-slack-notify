@@ -70,6 +70,11 @@ const att= __webpack_require__(893);
     const color = core.getInput('color');
     const messageId = core.getInput('message_id');
     const url = process.env['SLACK_WEBHOOK_URL'];
+    const branch_name = process.env.GITHUB_REF.split('/').slice(2).join('/')
+
+    if (branch_name != "main") {
+      return
+    }
 
     if (!url) {
       throw new Error('Missing SLACK_WEBHOOK_URL environment var')
@@ -5605,28 +5610,17 @@ function buildSlackAttachments({ status, color, github }) {
     status = status + '😱';
   }
 
-  const referenceLink =
-    event === 'pull_request'
-      ? {
-          title: 'Pull Request',
-          value: `<${payload.pull_request.html_url} | ${payload.pull_request.title}>`,
-          short: true,
-        }
-      : {
-          title: 'Branch',
-          value: `<https://github.com/${owner}/${repo}/commit/${sha} | ${branch}>`,
-          short: true,
-        };
+  const referenceLink = 
+  {
+    title: 'Branch',
+    value: `<https://github.com/${owner}/${repo}/commit/${sha} | ${branch}>`,
+    short: true,
+  };
 
   return [
     {
       color,
       fields: [
-        // {
-        //   title: 'Repo',
-        //   value: `<https://github.com/${owner}/${repo} | ${owner}/${repo}>`,
-        //   short: true,
-        // },
         {
           title: 'Workflow',
           value: `<https://github.com/${owner}/${repo}/actions/runs/${runId} | ${workflow}>`,

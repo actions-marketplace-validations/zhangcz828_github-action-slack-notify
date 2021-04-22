@@ -9,6 +9,11 @@ const att= require('./src/utils');
     const color = core.getInput('color');
     const messageId = core.getInput('message_id');
     const url = process.env['SLACK_WEBHOOK_URL'];
+    const branch_name = process.env.GITHUB_REF.split('/').slice(2).join('/')
+
+    if (branch_name != "main") {
+      return
+    }
 
     if (!url) {
       throw new Error('Missing SLACK_WEBHOOK_URL environment var')
