@@ -8,11 +8,13 @@ function buildSlackAttachments({ status, color, github }) {
 
   const sha = event === 'pull_request' ? payload.pull_request.head.sha : github.context.sha;
   const runId = parseInt(process.env.GITHUB_RUN_ID, 10);
+  const button_value = 'good';
 
   if ( status === 'SUCCESS') {
     status = status + '🚀';
   } else if ( status === 'FAILED') {
     status = status + '😱';
+    button_value = 'bad';
   }
 
   const referenceLink = 
@@ -42,6 +44,14 @@ function buildSlackAttachments({ status, color, github }) {
           value: event,
           short: true,
         },
+      ],
+      actions: [
+        {
+            name: 'Click Me',
+            text: 'Click Me!',
+            type: 'button',
+            value: button_value
+        }
       ],
       footer_icon: 'https://github.githubassets.com/favicon.ico',
       footer: `<https://github.com/${owner}/${repo} | ${owner}/${repo}>`,
